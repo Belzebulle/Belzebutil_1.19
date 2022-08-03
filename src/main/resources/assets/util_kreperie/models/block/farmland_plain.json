@@ -1,0 +1,14 @@
+{
+	"parent": "minecraft:block/cube",
+	"textures": {
+		"north": "util_kreperie:block/farmland_plain_side",
+		"south": "util_kreperie:block/farmland_plain_side",
+		"west": "util_kreperie:block/farmland_plain_side",
+		"east": "util_kreperie:block/farmland_plain_side",
+
+		"down" : "minecraft:block/dirt",
+		"up" : "util_kreperie:block/farmland_plain_top",
+
+		"particle": "minecraft:block/dirt"
+	}
+}

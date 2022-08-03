@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all" : "util_kreperie:block/deepslate_lead_ore"
+  }
+}

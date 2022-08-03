@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "util_kreperie:amethyst_ingot"
+    }
+  },
+  "result": {
+    "item": "util_kreperie:amethyst_block"
+  }
+}

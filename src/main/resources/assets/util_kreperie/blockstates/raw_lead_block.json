@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": { "model": "util_kreperie:block/raw_lead_block" }
+  }
+}

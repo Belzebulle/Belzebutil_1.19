@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "XOX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "util_kreperie:long_feather"
+    },
+    "O": {
+      "item": "minecraft:leather_boots"
+    }
+  },
+  "result": {
+    "item": "util_kreperie:light_boots"
+  }
+}

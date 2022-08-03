@@ -1,0 +1,18 @@
+{
+  "type": "util_kreperie:lead_station",
+  "ingredients": [
+    {
+      "item": "util_kreperie:lead_nugget"
+    },
+    {
+      "item": "util_kreperie:lead_nugget"
+    },
+    {
+      "item": "util_kreperie:lead_nugget"
+    }
+  ],
+  "maxProgress": 100,
+  "output": {
+    "item": "util_kreperie:lead_ingot"
+  }
+}

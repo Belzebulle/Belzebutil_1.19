@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "util_kreperie:rotten_coal"
+    }
+  },
+  "result": {
+    "item": "util_kreperie:rotten_coal_block"
+  }
+}

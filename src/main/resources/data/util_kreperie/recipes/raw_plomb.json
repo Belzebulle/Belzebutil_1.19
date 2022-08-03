@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "util_kreperie:raw_lead_block"
+    }
+
+  ],
+  "result": {
+    "item": "util_kreperie:raw_lead",
+    "count" : 9
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "util_kreperie:amethyst_block"
+    }
+
+  ],
+  "result": {
+    "item": "util_kreperie:amethyst_ingot",
+    "count" : 9
+  }
+}

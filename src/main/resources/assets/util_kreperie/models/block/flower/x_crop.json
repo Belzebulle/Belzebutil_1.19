@@ -1,0 +1,7 @@
+{
+  "parent": "util_kreperie:block/flower/crop_6",
+  "textures": {
+    "flower": "util_kreperie:block/crop/x_flower"
+  },
+  "render_type": "cutout"
+}

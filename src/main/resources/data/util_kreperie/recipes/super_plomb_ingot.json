@@ -1,0 +1,15 @@
+{
+  "type": "util_kreperie:lead_station",
+  "ingredients": [
+    {
+      "item": "util_kreperie:lead_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "maxProgress": 500,
+  "output": {
+    "item": "util_kreperie:super_lead_ingot"
+  }
+}

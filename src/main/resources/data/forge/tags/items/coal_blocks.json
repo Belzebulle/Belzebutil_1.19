@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+      "util_kreperie:rotten_coal_block",
+      "minecraft:coal_block"
+  ]
+}

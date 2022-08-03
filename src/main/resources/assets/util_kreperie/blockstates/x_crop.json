@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "age=0": {
+      "model": "util_kreperie:block/flower/crop_0"
+    },
+    "age=1": {
+      "model": "util_kreperie:block/flower/crop_1"
+    },
+    "age=2": {
+      "model": "util_kreperie:block/flower/crop_2"
+    },
+    "age=3": {
+      "model": "util_kreperie:block/flower/crop_3"
+    },
+    "age=4": {
+      "model": "util_kreperie:block/flower/crop_4"
+    },
+    "age=5": {
+      "model": "util_kreperie:block/flower/crop_5"
+    },
+    "age=6": {
+      "model": "util_kreperie:block/flower/x_crop"
+    }
+  }
+}

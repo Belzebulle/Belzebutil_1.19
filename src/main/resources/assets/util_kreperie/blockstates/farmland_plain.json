@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "util_kreperie:block/farmland_plain"
+    },
+    "moisture=1": {
+      "model": "util_kreperie:block/farmland_plain"
+    },
+    "moisture=2": {
+      "model": "util_kreperie:block/farmland_plain"
+    },
+    "moisture=3": {
+      "model": "util_kreperie:block/farmland_plain"
+    },
+    "moisture=4": {
+      "model": "util_kreperie:block/farmland_plain"
+    },
+    "moisture=5": {
+      "model": "util_kreperie:block/farmland_plain"
+    },
+    "moisture=6": {
+      "model": "util_kreperie:block/farmland_plain"
+    },
+    "moisture=7": {
+      "model": "util_kreperie:block/farmland_plain_moisted"
+    }
+  }
+}

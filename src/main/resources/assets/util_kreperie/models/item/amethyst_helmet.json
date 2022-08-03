@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "util_kreperie:item/amethyst_helmet"
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "type": "minecraft:block",
+  "functions": [
+    {
+      "function": "minecraft:explosion_decay"
+    }
+  ],
+  "pools": [
+    {
+      "bonus_rolls": 0.0,
+      "entries": [
+        {
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "block": "util_kreperie:x_crop",
+                  "condition": "minecraft:block_state_property",
+                  "properties": {
+                    "age": "6"
+                  }
+                }
+              ],
+              "name": "util_kreperie:x_eat"
+            },
+            {
+              "type": "minecraft:item",
+              "name": "util_kreperie:x_seeds"
+            }
+          ]
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "util_kreperie:x_crop",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "6"
+          }
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "functions": [
+            {
+              "enchantment": "minecraft:fortune",
+              "formula": "minecraft:binomial_with_bonus_count",
+              "function": "minecraft:apply_bonus",
+              "parameters": {
+                "extra": 1,
+                "probability": 0.2614286
+              }
+            }
+          ],
+          "name": "util_kreperie:x_seeds"
+        }
+      ],
+      "rolls": 1.0
+    }
+  ]
+}
