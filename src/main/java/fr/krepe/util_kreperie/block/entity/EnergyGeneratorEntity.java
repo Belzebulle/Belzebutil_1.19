@@ -172,12 +172,26 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
             pLevel.setBlock(pPos, pState.setValue(LIT, false), 3);
         }
 
-        if(pLevel.getBlockEntity(pPos.above()) instanceof LeadStationEntity leadStationEntity){
+        if(isNextToLeadStation(pLevel, pPos)){
+            LeadStationEntity leadStationEntity = (LeadStationEntity) pLevel.getBlockEntity(posNextToLeadStation(pLevel, pPos));
             if(canReceiveEnergy(leadStationEntity)){
                 if(pBlockEntity.energyStorage.getEnergyStored() >= 10 )
                     pBlockEntity.energyStorage.transferEnergy(10, leadStationEntity);
             }
         }
+    }
+
+    private static boolean isNextToLeadStation(Level pLevel, BlockPos pPos) {
+        return posNextToLeadStation(pLevel, pPos) != null;
+    }
+
+    private static BlockPos posNextToLeadStation(Level pLevel, BlockPos pPos){
+        for (   Direction direction : Direction.values()) {
+            if(pLevel.getBlockEntity(pPos.relative(direction)) instanceof LeadStationEntity){
+                return pPos.relative(direction);
+            }
+        }
+        return null;
     }
 
     public static boolean isCrafting(EnergyGeneratorEntity entity) {
