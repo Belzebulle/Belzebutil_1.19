@@ -32,7 +32,6 @@ public class LeadStationRecipe implements Recipe<SimpleContainer> {
         }
 
         if (recipeItems.size() != 3){
-
             return recipeItems.get(0).test(pContainer.getItem(0))
                     && recipeItems.get(1).test(pContainer.getItem(1))
                     && Ingredient.EMPTY.isEmpty();

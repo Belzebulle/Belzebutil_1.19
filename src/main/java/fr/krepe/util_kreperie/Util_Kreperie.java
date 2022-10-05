@@ -42,10 +42,8 @@ public class Util_Kreperie
         ModMenuTypes.register(eventBus);
         ModRecipes.register(eventBus);
 
-        ModConfiguredFeatures.register(eventBus);
-        ModPlacedFeatures.register(eventBus);
-
-
+        //ModConfiguredFeatures.register(eventBus);
+        //ModPlacedFeatures.register(eventBus);
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::setup);
         MinecraftForge.EVENT_BUS.register(this);
@@ -53,7 +51,6 @@ public class Util_Kreperie
 
     private void clientSetup(final FMLClientSetupEvent event)
     {
-
 
         MenuScreens.register(ModMenuTypes.LEAD_STATION_MENU.get(), LeadStationScreen::new);
         MenuScreens.register(ModMenuTypes.ENERGY_GENERATOR_MENU.get(), EnergyGeneratorScreen::new);

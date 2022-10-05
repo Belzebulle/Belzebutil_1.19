@@ -38,6 +38,8 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 import java.util.Optional;
 
+import static fr.krepe.util_kreperie.block.custom.LeadStation.LIT;
+
 public class LeadStationEntity extends BlockEntity implements MenuProvider {
 
     private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
@@ -68,9 +70,7 @@ public class LeadStationEntity extends BlockEntity implements MenuProvider {
         this.data = data;
     }
 
-    public void setEnergyLevel(int energyLevel) {
-        this.energyStorage.setEnergy(energyLevel);
-    }
+    public void setEnergyLevel(int energyLevel) { this.energyStorage.setEnergy(energyLevel); }
 
     public LeadStationEntity(BlockPos pWorldPosition, BlockState pBlockState){
         super(ModBlockEntity.LEAD_STATION_ENTITY.get(), pWorldPosition, pBlockState);
@@ -89,7 +89,6 @@ public class LeadStationEntity extends BlockEntity implements MenuProvider {
                     case 1: LeadStationEntity.this.maxProgress = value; break;
                 }
             }
-
             public int getCount() { return 2; }
         };
     }
@@ -161,24 +160,19 @@ public class LeadStationEntity extends BlockEntity implements MenuProvider {
     }
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, LeadStationEntity pBlockEntity) {
-
+        if(pLevel.isClientSide) return;
         if(hasRecipe(pBlockEntity) && hasEnoughEnergy(pBlockEntity)) {
-                pBlockEntity.progress++;
-                extractEnergy(pBlockEntity);
-                //setChanged(pLevel, pPos, pState);
-                if(pBlockEntity.progress > pBlockEntity.maxProgress) {
-                    craftItem(pBlockEntity);
-            }
+            pBlockEntity.progress++;
+            extractEnergy(pBlockEntity);
+            setChanged(pLevel, pPos, pState);
+            craftItem(pBlockEntity);
+            pLevel.setBlock(pPos, pState.setValue(LIT, true), 2);
         } else {
             pBlockEntity.resetProgress();
             setChanged(pLevel, pPos, pState);
+            pLevel.setBlock(pPos, pState.setValue(LIT, false), 2);
         }
     }
-
-    public static boolean isCrafting(LeadStationEntity entity) {
-        return entity.data.get(0) > 0;
-    }
-
     private static void extractEnergy(LeadStationEntity entity) {
         entity.energyStorage.extractEnergy(50, false);
     }
@@ -208,6 +202,9 @@ public class LeadStationEntity extends BlockEntity implements MenuProvider {
     }
     
     private static void craftItem(LeadStationEntity entity) {
+
+        if(entity.progress < entity.maxProgress) return;
+
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {

@@ -160,6 +160,8 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
     }
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, EnergyGeneratorEntity pBlockEntity) {
+        if (pLevel.isClientSide) return;
+
         Item item = pBlockEntity.itemHandler.getStackInSlot(0).getItem();
         pBlockEntity.progress-- ;
         craftItem(pBlockEntity, item);
@@ -195,17 +197,15 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
 
     private static void craftItem(EnergyGeneratorEntity entity, Item item) {
 
-        if (entity.progress < entity.maxProgress){
+        if (entity.progress > entity.maxProgress) return;
 
-            if(hasItem(entity) && isCoalItem(entity) && entity.progress <= 0){
-                entity.itemHandler.extractItem(0,1, false);
-                entity.progress = entity.maxProgress;
-            }
-            if (entity.progress >= 0 && entity.progress < entity.maxProgress){
-                entity.energyStorage.receiveEnergy(10, false);
-            }
+        if(hasItem(entity) && isCoalItem(entity) && entity.progress <= 0){
+            entity.itemHandler.extractItem(0,1, false);
+            entity.progress = entity.maxProgress;
         }
-
+        if (entity.progress >= 0 && entity.progress < entity.maxProgress){
+                entity.energyStorage.receiveEnergy(10, false);
+        }
     }
 
 

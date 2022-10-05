@@ -33,6 +33,7 @@ import java.util.stream.Stream;
 
 public class LeadStation extends BaseEntityBlock {
 
+    public static final BooleanProperty LIT = BooleanProperty.create("lit");
     public LeadStation(Properties p_49224_) {
         super(p_49224_);
     }
@@ -66,6 +67,7 @@ public class LeadStation extends BaseEntityBlock {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(FACING);
+        pBuilder.add(LIT);
     }
 
     // Block Entity
