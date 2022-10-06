@@ -1,13 +1,13 @@
 {
   "replace": false,
   "values": [
-    "util_kreperie:lead_block",
-    "util_kreperie:raw_lead_block",
-    "util_kreperie:amethyst_block",
-    "util_kreperie:lead_ore",
-    "util_kreperie:deepslate_lead_ore",
-    "util_kreperie:lead_station",
-    "util_kreperie:energy_generator"
+    "belzebutil:lead_block",
+    "belzebutil:raw_lead_block",
+    "belzebutil:amethyst_block",
+    "belzebutil:lead_ore",
+    "belzebutil:deepslate_lead_ore",
+    "belzebutil:lead_station",
+    "belzebutil:energy_generator"
 
   ]
 }

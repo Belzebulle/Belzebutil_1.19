@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "belzebutil:block/farmland_plain"
+    },
+    "moisture=1": {
+      "model": "belzebutil:block/farmland_plain"
+    },
+    "moisture=2": {
+      "model": "belzebutil:block/farmland_plain"
+    },
+    "moisture=3": {
+      "model": "belzebutil:block/farmland_plain"
+    },
+    "moisture=4": {
+      "model": "belzebutil:block/farmland_plain"
+    },
+    "moisture=5": {
+      "model": "belzebutil:block/farmland_plain"
+    },
+    "moisture=6": {
+      "model": "belzebutil:block/farmland_plain"
+    },
+    "moisture=7": {
+      "model": "belzebutil:block/farmland_plain_moisted"
+    }
+  }
+}

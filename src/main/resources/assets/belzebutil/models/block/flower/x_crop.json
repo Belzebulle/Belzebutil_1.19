@@ -1,0 +1,7 @@
+{
+  "parent": "belzebutil:block/flower/crop_6",
+  "textures": {
+    "flower": "belzebutil:block/crop/x_flower"
+  },
+  "render_type": "cutout"
+}

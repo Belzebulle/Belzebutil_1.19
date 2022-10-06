@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all" : "belzebutil:block/amethyst_block"
+  }
+}

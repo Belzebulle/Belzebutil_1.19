@@ -1,0 +1,15 @@
+{
+  "type": "belzebutil:lead_station",
+  "ingredients": [
+    {
+      "item": "belzebutil:lead_ingot"
+    },
+    {
+      "item": "minecraft:iron_ingot"
+    }
+  ],
+  "maxProgress": 500,
+  "output": {
+    "item": "belzebutil:super_lead_ingot"
+  }
+}

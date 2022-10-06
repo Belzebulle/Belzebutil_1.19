@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "belzebutil:rotten_coal"
+    }
+  },
+  "result": {
+    "item": "belzebutil:rotten_coal_block"
+  }
+}

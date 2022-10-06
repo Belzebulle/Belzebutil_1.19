@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "XXX",
+    "XXX",
+    "XXX"
+  ],
+  "key": {
+    "X": {
+      "item": "belzebutil:amethyst_ingot"
+    }
+  },
+  "result": {
+    "item": "belzebutil:amethyst_block"
+  }
+}

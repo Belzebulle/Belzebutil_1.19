@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "belzebutil:rotten_coal_block"
+    }
+
+  ],
+  "result": {
+    "item": "belzebutil:rotten_coal",
+    "count" : 9
+  }
+}

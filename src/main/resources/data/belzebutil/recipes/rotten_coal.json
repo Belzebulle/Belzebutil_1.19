@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RRR",
+    "RCR",
+    "RRR"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:rotten_flesh"
+    },
+    "C": {
+      "tag": "minecraft:coals"
+    }
+
+  },
+  "result": {
+    "item": "belzebutil:rotten_coal"
+  }
+}

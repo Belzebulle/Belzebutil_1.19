@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "belzebutil:raw_lead_block"
+    }
+
+  ],
+  "result": {
+    "item": "belzebutil:raw_lead",
+    "count" : 9
+  }
+}

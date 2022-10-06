@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "facing=north,lit=false": { "model": "belzebutil:block/lead_station_off" },
+    "facing=east,lit=false": { "model": "belzebutil:block/lead_station_off", "y": 90 },
+    "facing=south,lit=false": { "model": "belzebutil:block/lead_station_off", "y": 180 },
+    "facing=west,lit=false": { "model": "belzebutil:block/lead_station_off", "y": 270 },
+
+    "facing=north,lit=true": { "model": "belzebutil:block/lead_station_on" },
+    "facing=east,lit=true": { "model": "belzebutil:block/lead_station_on", "y": 90 },
+    "facing=south,lit=true": { "model": "belzebutil:block/lead_station_on", "y": 180 },
+    "facing=west,lit=true": { "model": "belzebutil:block/lead_station_on", "y": 270 }
+  }
+}

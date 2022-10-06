@@ -1,0 +1,49 @@
+{
+  "itemGroup.belzebutil_tab" : "belzebutil Mod",
+  "itemGroup.belzebutil_tab_armor" : "belzebutil Mod Armor",
+
+  "key.belzebutil.drink_water": "belzebutil" ,
+  "key.category.belzebutil.weebos" : "Drink water",
+
+  "item.belzebutil.diamantium" : "Diamantium",
+  "item.belzebutil.diamantium_sword" : "Diamantinum Sword",
+
+  "item.belzebutil.amethyst_ingot" :  "Amethyst Ingot",
+  "item.belzebutil.amethyst_helmet" :  "Amethyst Helmet",
+  "item.belzebutil.amethyst_chestplate" :  "Amethyst Chestplate",
+  "item.belzebutil.amethyst_leggings" :  "Amethyst Leggings",
+  "item.belzebutil.amethyst_boots" :  "Amethyst Boots",
+  "block.belzebutil.amethyst_block" : "Amethyst Block",
+
+  "item.belzebutil.lead_helmet" :  "Lead Helmet",
+  "item.belzebutil.lead_chestplate" :  "Lead Chestplate",
+  "item.belzebutil.lead_leggings" :  "Lead Leggings",
+  "item.belzebutil.lead_boots" :  "Lead Boots",
+  "item.belzebutil.lead_ingot" :  "Lead Ingot",
+  "item.belzebutil.super_lead_ingot" :  "Super Lead Ingot",
+  "item.belzebutil.lead_nugget" :  "Lead Nugget",
+  "item.belzebutil.raw_lead" :  "Raw Lead",
+  "item.belzebutil.lead_pickaxe" : "Lead Pickaxe",
+  "block.belzebutil.lead_block" : "Lead Block",
+  "block.belzebutil.raw_lead_block" : "Raw Lead Block",
+  "block.belzebutil.lead_ore" : "Lead Ore",
+  "block.belzebutil.deepslate_lead_ore" : "Deepslate Lead Ore",
+  "block.belzebutil.lead_station" : "Lead Station",
+  "block.belzebutil.energy_generator" : "Energy Generator",
+
+  "item.belzebutil.long_feather" :  "Long Feather",
+  "item.belzebutil.light_boots" :  "Light Boots",
+
+  "item.belzebutil.scuba_helmet" :  "Scuba Helmet",
+  "item.belzebutil.scuba_chestplate" :  "Scuba Chestplate",
+  "item.belzebutil.scuba_leggings" :  "Scuba Leggings",
+  "item.belzebutil.scuba_boots" :  "Scuba Boots",
+
+  "item.belzebutil.rotten_coal": "Rotten Coal",
+  "block.belzebutil.rotten_coal_block": "Rotten Coal Block",
+  "block.belzebutil.farmland_plain": "Farmland Plain",
+
+
+  "item.belzebutil.x_seeds": "X seeds",
+  "item.belzebutil.x_eat": "X Food"
+}

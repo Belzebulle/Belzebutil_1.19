@@ -1,0 +1,18 @@
+{
+  "type": "belzebutil:lead_station",
+  "ingredients": [
+    {
+      "item": "belzebutil:lead_nugget"
+    },
+    {
+      "item": "belzebutil:lead_nugget"
+    },
+    {
+      "item": "belzebutil:lead_nugget"
+    }
+  ],
+  "maxProgress": 100,
+  "output": {
+    "item": "belzebutil:lead_ingot"
+  }
+}

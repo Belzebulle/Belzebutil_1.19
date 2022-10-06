@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "X X",
+    "XOX",
+    "X X"
+  ],
+  "key": {
+    "X": {
+      "item": "belzebutil:long_feather"
+    },
+    "O": {
+      "item": "minecraft:leather_boots"
+    }
+  },
+  "result": {
+    "item": "belzebutil:light_boots"
+  }
+}

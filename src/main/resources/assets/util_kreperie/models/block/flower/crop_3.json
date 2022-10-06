@@ -1,7 +1,0 @@
-{
-  "parent": "block/cross",
-  "textures": {
-    "cross": "util_kreperie:block/crop/crop_3"
-  },
-  "render_type": "cutout"
-}

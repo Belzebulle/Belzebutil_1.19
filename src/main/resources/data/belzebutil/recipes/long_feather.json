@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " X ",
+    "XOX",
+    "XOX"
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:feather"
+    },
+    "O": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "item": "belzebutil:long_feather"
+  }
+}

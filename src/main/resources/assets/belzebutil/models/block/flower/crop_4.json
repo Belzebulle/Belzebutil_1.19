@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "belzebutil:block/crop/crop_4"
+  },
+  "render_type": "cutout"
+}
