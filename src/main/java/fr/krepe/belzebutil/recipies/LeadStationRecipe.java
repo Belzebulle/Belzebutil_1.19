@@ -31,11 +31,13 @@ public class LeadStationRecipe implements Recipe<SimpleContainer> {
         }
 
         if (recipeItems.size() != 3){
+
             return recipeItems.get(0).test(pContainer.getItem(0))
                     && recipeItems.get(1).test(pContainer.getItem(1))
-                    && Ingredient.EMPTY.isEmpty();
+                    && pContainer.getItem(2).isEmpty();
         } else {
-        return recipeItems.get(0).test(pContainer.getItem(0))
+
+            return recipeItems.get(0).test(pContainer.getItem(0))
                 && recipeItems.get(1).test(pContainer.getItem(1))
                 && recipeItems.get(2).test(pContainer.getItem(2));
         }
