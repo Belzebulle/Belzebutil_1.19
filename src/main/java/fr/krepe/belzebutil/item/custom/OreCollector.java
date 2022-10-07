@@ -34,6 +34,7 @@ public class OreCollector extends DiggerItem {
             Blocks.COAL_ORE,
             Blocks.IRON_ORE,
             Blocks.GOLD_ORE,
+            Blocks.COPPER_ORE,
             Blocks.DIAMOND_ORE,
             Blocks.EMERALD_ORE,
             Blocks.LAPIS_ORE,
@@ -45,6 +46,7 @@ public class OreCollector extends DiggerItem {
             Blocks.DEEPSLATE_COAL_ORE,
             Blocks.DEEPSLATE_IRON_ORE,
             Blocks.DEEPSLATE_GOLD_ORE,
+            Blocks.DEEPSLATE_COPPER_ORE,
             Blocks.DEEPSLATE_DIAMOND_ORE,
             Blocks.DEEPSLATE_EMERALD_ORE,
             Blocks.DEEPSLATE_LAPIS_ORE,
@@ -126,6 +128,9 @@ public class OreCollector extends DiggerItem {
         }
         if (block == Blocks.GOLD_ORE) {
             return Items.RAW_GOLD;
+        }
+        if (block == Blocks.COPPER_ORE) {
+            return Items.RAW_COPPER;
         }
         if (block == Blocks.DIAMOND_ORE) {
             return Items.DIAMOND;
