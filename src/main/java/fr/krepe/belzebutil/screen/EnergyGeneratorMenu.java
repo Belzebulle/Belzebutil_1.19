@@ -1,6 +1,6 @@
 package fr.krepe.belzebutil.screen;
 
-import fr.krepe.belzebutil.block.ModBlock;
+import fr.krepe.belzebutil.block.ModBlocks;
 import fr.krepe.belzebutil.block.entity.EnergyGeneratorEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
@@ -10,7 +10,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class EnergyGeneratorMenu extends AbstractContainerMenu {
@@ -106,7 +105,7 @@ public class EnergyGeneratorMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlock.ENERGY_GENERATOR.get());
+                pPlayer, ModBlocks.ENERGY_GENERATOR.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {

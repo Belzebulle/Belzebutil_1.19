@@ -1,7 +1,6 @@
 package fr.krepe.belzebutil.block.custom;
 
-import fr.krepe.belzebutil.block.ModBlockEntity;
-import fr.krepe.belzebutil.block.entity.LeadStationEntity;
+import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.block.entity.LeadStationEntity;
 
 import net.minecraft.core.BlockPos;
@@ -112,7 +111,7 @@ public class LeadStation extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return createTickerHelper(pBlockEntityType, ModBlockEntity.LEAD_STATION_ENTITY.get(),
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.LEAD_STATION_ENTITY.get(),
                 LeadStationEntity::tick);
     }
 }

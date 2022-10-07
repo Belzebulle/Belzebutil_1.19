@@ -1,6 +1,6 @@
 package fr.krepe.belzebutil;
 
-import fr.krepe.belzebutil.item.ModItem;
+import fr.krepe.belzebutil.item.ModItems;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
 
@@ -9,7 +9,7 @@ public class CreativeTab {
 
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModItem.LEAD_CHESTPLATE.get());
+            return new ItemStack(ModItems.LEAD_CHESTPLATE.get());
         }
     };
 
@@ -17,7 +17,7 @@ public class CreativeTab {
 
         @Override
         public ItemStack makeIcon() {
-            return new ItemStack(ModItem.SUPER_LEAD_INGOT.get());
+            return new ItemStack(ModItems.SUPER_LEAD_INGOT.get());
         }
     };
 }

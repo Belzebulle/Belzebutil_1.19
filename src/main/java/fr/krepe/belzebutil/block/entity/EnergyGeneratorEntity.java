@@ -1,8 +1,8 @@
 package fr.krepe.belzebutil.block.entity;
 
-import fr.krepe.belzebutil.block.ModBlockEntity;
+import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.energy.KrepeEnergyStorage;
-import fr.krepe.belzebutil.item.ModItem;
+import fr.krepe.belzebutil.item.ModItems;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.network.packet.PacketSyncEnergyToClient;
 import fr.krepe.belzebutil.screen.EnergyGeneratorMenu;
@@ -71,7 +71,7 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
     }
 
     public EnergyGeneratorEntity(BlockPos pWorldPosition, BlockState pBlockState){
-        super(ModBlockEntity.ENERGY_GENERATOR_ENTITY.get(), pWorldPosition, pBlockState);
+        super(ModBlockEntities.ENERGY_GENERATOR_ENTITY.get(), pWorldPosition, pBlockState);
         this.data = new ContainerData() {
             public int get(int index) {
                 switch (index) {
@@ -205,7 +205,7 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
         return !pBlockEntity.itemHandler.getStackInSlot(0).isEmpty();
     }
     private static boolean isCoalItem(EnergyGeneratorEntity entity){
-        return entity.itemHandler.getStackInSlot(0).getItem() == ModItem.ROTTEN_COAL.get();
+        return entity.itemHandler.getStackInSlot(0).getItem() == ModItems.ROTTEN_COAL.get();
     }
 
     private static void craftItem(EnergyGeneratorEntity entity, Item item) {

@@ -1,9 +1,8 @@
 package fr.krepe.belzebutil.block.custom;
 
-import fr.krepe.belzebutil.block.ModBlockEntity;
+import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.block.entity.EnergyGeneratorEntity;
 import net.minecraft.core.BlockPos;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,7 +19,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.gameevent.GameEventListener;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -111,7 +109,7 @@ public class EnergyGenerator extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return createTickerHelper(pBlockEntityType, ModBlockEntity.ENERGY_GENERATOR_ENTITY.get(),
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.ENERGY_GENERATOR_ENTITY.get(),
                 EnergyGeneratorEntity::tick);
     }
 

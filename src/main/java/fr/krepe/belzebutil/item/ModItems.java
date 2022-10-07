@@ -1,7 +1,7 @@
 package fr.krepe.belzebutil.item;
 
 import fr.krepe.belzebutil.CreativeTab;
-import fr.krepe.belzebutil.block.ModBlock;
+import fr.krepe.belzebutil.block.ModBlocks;
 import fr.krepe.belzebutil.item.armor.ModArmorItemLight;
 import fr.krepe.belzebutil.item.armor.ModArmorItemLead;
 import fr.krepe.belzebutil.item.armor.ModArmorItemScuba;
@@ -16,7 +16,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.Nullable;
 
-public class ModItem {
+public class ModItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, fr.krepe.belzebutil.Belzebutil.MOD_ID);
 
     public static final RegistryObject<Item> DIAMANTIUM = ITEMS.register("diamantium", () -> new Item(new Item.Properties().tab(CreativeTab.ModTab)));
@@ -24,7 +24,7 @@ public class ModItem {
             () -> new SwordItem(ModItemTier.DIAMANTIUM, 2, 3f, new Item.Properties().tab(CreativeTab.ModTab)));
 
     public static final RegistryObject<Item> X_SEED = ITEMS.register("x_seeds",
-            () -> new ItemNameBlockItem(ModBlock.X_CROP.get(),
+            () -> new ItemNameBlockItem(ModBlocks.X_CROP.get(),
                     new Item.Properties().tab(CreativeTab.ModTab)));
 
     public static final RegistryObject<Item> X_EAT = ITEMS.register("x_eat", () -> new Item(new Item.Properties().tab(CreativeTab.ModTab)

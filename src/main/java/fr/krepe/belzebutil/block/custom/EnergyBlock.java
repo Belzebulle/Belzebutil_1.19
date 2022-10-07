@@ -1,6 +1,6 @@
 package fr.krepe.belzebutil.block.custom;
 
-import fr.krepe.belzebutil.block.ModBlockEntity;
+import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.block.entity.EnergyBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
@@ -82,7 +82,7 @@ public class EnergyBlock extends BaseEntityBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level pLevel, BlockState pState, BlockEntityType<T> pBlockEntityType) {
-        return createTickerHelper(pBlockEntityType, ModBlockEntity.ENERGY_BLOCK_ENTITY.get(),
+        return createTickerHelper(pBlockEntityType, ModBlockEntities.ENERGY_BLOCK_ENTITY.get(),
                 EnergyBlockEntity::tick);
     }
 

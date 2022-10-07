@@ -9,10 +9,10 @@ import java.util.function.Supplier;
 public enum ModItemTier implements Tier {
 
     DIAMANTIUM(8, 3060, 16.0F, 8.0F, 25, () -> {
-        return Ingredient.of(ModItem.DIAMANTIUM.get());
+        return Ingredient.of(ModItems.DIAMANTIUM.get());
     }),
     LEAD(8, 3000, 4.0F, 2.0F, 25, () -> {
-        return Ingredient.of(ModItem.LEAD_INGOT.get());
+        return Ingredient.of(ModItems.LEAD_INGOT.get());
     });
     private final int harvestLevel;
     private final int maxUses;

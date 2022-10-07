@@ -1,6 +1,6 @@
 package fr.krepe.belzebutil.block.entity;
 
-import fr.krepe.belzebutil.block.ModBlockEntity;
+import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.energy.KrepeEnergyStorage;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.network.packet.PacketSyncEnergyToClient;
@@ -72,7 +72,7 @@ public class LeadStationEntity extends BlockEntity implements MenuProvider {
     public void setEnergyLevel(int energyLevel) { this.energyStorage.setEnergy(energyLevel); }
 
     public LeadStationEntity(BlockPos pWorldPosition, BlockState pBlockState){
-        super(ModBlockEntity.LEAD_STATION_ENTITY.get(), pWorldPosition, pBlockState);
+        super(ModBlockEntities.LEAD_STATION_ENTITY.get(), pWorldPosition, pBlockState);
         this.data = new ContainerData() {
             public int get(int index) {
                 switch (index) {

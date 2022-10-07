@@ -1,6 +1,7 @@
 package fr.krepe.belzebutil.item.custom;
 
-import fr.krepe.belzebutil.block.ModBlock;
+import fr.krepe.belzebutil.block.ModBlocks;
+import fr.krepe.belzebutil.item.ModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.core.BlockPos;
@@ -9,11 +10,13 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -24,15 +27,40 @@ import java.util.List;
 import java.util.Map;
 
 
+
 public class OreCollector extends DiggerItem {
+
+    private static final List<Block> ORES_LIST = List.of(
+            Blocks.COAL_ORE,
+            Blocks.IRON_ORE,
+            Blocks.GOLD_ORE,
+            Blocks.DIAMOND_ORE,
+            Blocks.EMERALD_ORE,
+            Blocks.LAPIS_ORE,
+            Blocks.REDSTONE_ORE,
+            ModBlocks.LEAD_ORE.get()
+    );
+
+    private static final List<Block> DEEPSLATE_ORES_LIST = List.of(
+            Blocks.DEEPSLATE_COAL_ORE,
+            Blocks.DEEPSLATE_IRON_ORE,
+            Blocks.DEEPSLATE_GOLD_ORE,
+            Blocks.DEEPSLATE_DIAMOND_ORE,
+            Blocks.DEEPSLATE_EMERALD_ORE,
+            Blocks.DEEPSLATE_LAPIS_ORE,
+            Blocks.DEEPSLATE_REDSTONE_ORE,
+            ModBlocks.DEEPSLATE_LEAD_ORE.get()
+    );
+
+
     public OreCollector(Tier tier, int i, float v, Properties properties) {
-        super((float)i, v, tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
+        super((float) i, v, tier, BlockTags.MINEABLE_WITH_PICKAXE, properties);
     }
 
 
     @Override
     public InteractionResult useOn(UseOnContext context) {
-        if(!context.getLevel().isClientSide) {
+        if (!context.getLevel().isClientSide) {
             BlockPos blockClickedPos = context.getClickedPos();
             Player player = context.getPlayer();
 
@@ -41,49 +69,21 @@ public class OreCollector extends DiggerItem {
             Map enchant = EnchantmentHelper.getEnchantments(player.getItemInHand(InteractionHand.MAIN_HAND));
 
             int x = 1;
-            if(enchant.containsKey(Enchantments.BLOCK_FORTUNE)) {
-                x = (int) enchant.get(Enchantments.BLOCK_FORTUNE);
+            if (enchant.containsKey(Enchantments.BLOCK_FORTUNE)) {
+                x += (int) enchant.get(Enchantments.BLOCK_FORTUNE);
             }
 
-            if(isValuableBlockStone(blockClicked)){
-
-                /*
-                if (Blocks.IRON_ORE.equals(blockClicked)) {
-                    player.getInventory().add(new ItemStack(Items.RAW_IRON, x));
-                }
-                if (Blocks.COAL_ORE.equals(blockClicked)) {
-                    player.getInventory().add(new ItemStack(Items.COAL, x));
-                }
-                if (Blocks.COPPER_ORE.equals(blockClicked)) {
-                    player.getInventory().add(new ItemStack(Items.RAW_COPPER, x));
-                }
-                if (Blocks.GOLD_ORE.equals(blockClicked)) {
-                    player.getInventory().add(new ItemStack(Items.RAW_GOLD, x));
-                }
-                if (Blocks.REDSTONE_ORE.equals(blockClicked)) {
-                    player.getInventory().add(new ItemStack(Items.REDSTONE, x));
-                }
-                if (Blocks.LAPIS_ORE.equals(blockClicked)) {
-                    player.getInventory().add(new ItemStack(Items.LAPIS_LAZULI, x));
-                }
-                if (Blocks.EMERALD_ORE.equals(blockClicked)) {
-                    player.getInventory().add(new ItemStack(Items.EMERALD, x));
-                }
-                if (Blocks.DIAMOND_ORE.equals(blockClicked)) {
-                    player.getInventory().add(new ItemStack(Items.DIAMOND, x));
-                }
-                player.getItemInHand(InteractionHand.MAIN_HAND).hurt(x, RandomSource.create(), null);
-                 */
-
-                context.getLevel().destroyBlock(blockClickedPos, true);
+            if (isValuableOre(blockClicked)) {
+                dropItem(context.getLevel(), blockClickedPos, player, x);
                 context.getLevel().setBlockAndUpdate(blockClickedPos, Blocks.STONE.defaultBlockState());
-                player.getItemInHand(InteractionHand.MAIN_HAND).hurt(x, RandomSource.create(), null);
+                player.getItemInHand(InteractionHand.MAIN_HAND).hurt(4 * x, RandomSource.create(), null);
             }
-            if(isValuableBlockDeepslate(blockClicked)){
 
-                context.getLevel().destroyBlock(blockClickedPos, true);
+            if (isValuableDeepslateOre(blockClicked)) {
+                dropItem(context.getLevel(), blockClickedPos, player, x);
                 context.getLevel().setBlockAndUpdate(blockClickedPos, Blocks.DEEPSLATE.defaultBlockState());
-                player.getItemInHand(InteractionHand.MAIN_HAND).hurt(2 * x, RandomSource.create(), null);
+                player.getItemInHand(InteractionHand.MAIN_HAND).hurt(8 * x, RandomSource.create(), null);
+                // log blockClicked
             }
         }
         return super.useOn(context);
@@ -91,25 +91,21 @@ public class OreCollector extends DiggerItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level p_41422_, List<Component> components, TooltipFlag flag) {
-        if(Screen.hasShiftDown()){
+        if (Screen.hasShiftDown()) {
             components.add(Component.literal("Collect one ore without break the stone").withStyle(ChatFormatting.AQUA));
-        }else{
+        } else {
             components.add(Component.literal("Press SHIFT for more info").withStyle(ChatFormatting.YELLOW));
         }
 
         super.appendHoverText(stack, p_41422_, components, flag);
     }
 
-    private boolean isValuableBlockStone(Block block){
-        return block == Blocks.COAL_ORE || block == Blocks.IRON_ORE || block == Blocks.REDSTONE_ORE ||
-                block == Blocks.COPPER_ORE || block == Blocks.EMERALD_ORE || block == Blocks.DIAMOND_ORE ||
-                block == Blocks.GOLD_ORE || block == Blocks.LAPIS_ORE || block == ModBlock.LEAD_ORE.get();
+    private boolean isValuableOre(Block block) {
+        return ORES_LIST.contains(block);
     }
 
-    private boolean isValuableBlockDeepslate(Block block){
-        return block == Blocks.DEEPSLATE_COAL_ORE || block == Blocks.DEEPSLATE_IRON_ORE || block == Blocks.DEEPSLATE_REDSTONE_ORE ||
-                block == Blocks.DEEPSLATE_COPPER_ORE || block == Blocks.DEEPSLATE_EMERALD_ORE || block == Blocks.DEEPSLATE_DIAMOND_ORE ||
-                block == Blocks.DEEPSLATE_GOLD_ORE || block == Blocks.DEEPSLATE_LAPIS_ORE || block == ModBlock.DEEPSLATE_LEAD_ORE.get();
+    private boolean isValuableDeepslateOre(Block block) {
+        return DEEPSLATE_ORES_LIST.contains(block);
     }
 
     @Override
@@ -117,4 +113,60 @@ public class OreCollector extends DiggerItem {
         return net.minecraftforge.common.ToolActions.DEFAULT_PICKAXE_ACTIONS.contains(toolAction);
     }
 
+    public void dropItem(Level level, BlockPos pos, Player player, int x) {
+        level.addFreshEntity(new ItemEntity(level, pos.getX(), pos.getY(), pos.getZ(), new ItemStack(getItemFromOre(level.getBlockState(pos).getBlock()), x)));
+    }
+
+    private ItemLike getItemFromOre(Block block) {
+        if (block == Blocks.COAL_ORE) {
+            return Items.COAL;
+        }
+        if (block == Blocks.IRON_ORE) {
+            return Items.RAW_IRON;
+        }
+        if (block == Blocks.GOLD_ORE) {
+            return Items.RAW_GOLD;
+        }
+        if (block == Blocks.DIAMOND_ORE) {
+            return Items.DIAMOND;
+        }
+        if (block == Blocks.EMERALD_ORE) {
+            return Items.EMERALD;
+        }
+        if (block == Blocks.LAPIS_ORE) {
+            return Items.LAPIS_LAZULI;
+        }
+        if (block == Blocks.REDSTONE_ORE) {
+            return Items.REDSTONE;
+        }
+        if (block == ModBlocks.LEAD_ORE.get()) {
+            return ModItems.RAW_LEAD.get();
+        }
+        if (block == Blocks.DEEPSLATE_COAL_ORE) {
+            return Items.COAL;
+        }
+        if (block == Blocks.DEEPSLATE_IRON_ORE) {
+            return Items.RAW_IRON;
+        }
+        if (block == Blocks.DEEPSLATE_GOLD_ORE) {
+            return Items.RAW_GOLD;
+        }
+        if (block == Blocks.DEEPSLATE_DIAMOND_ORE) {
+            return Items.DIAMOND;
+        }
+        if (block == Blocks.DEEPSLATE_EMERALD_ORE) {
+            return Items.EMERALD;
+        }
+        if (block == Blocks.DEEPSLATE_LAPIS_ORE) {
+            return Items.LAPIS_LAZULI;
+        }
+        if (block == Blocks.DEEPSLATE_REDSTONE_ORE) {
+            return Items.REDSTONE;
+        }
+        if (block == ModBlocks.DEEPSLATE_LEAD_ORE.get()) {
+            return ModItems.RAW_LEAD.get();
+        }
+        return null;
+    }
 }
+

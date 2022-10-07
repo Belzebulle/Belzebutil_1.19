@@ -13,13 +13,13 @@ import java.util.function.Supplier;
 public enum ModArmorTier implements ArmorMaterial {
 
     AMETHYST("amethyst", 20, new int[]{3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
-        return Ingredient.of(ModItem.AMETHYST_INGOT.get());
+        return Ingredient.of(ModItems.AMETHYST_INGOT.get());
     }),
     LEAD("lead", 30, new int[]{3, 5, 7, 3}, 25, SoundEvents.ARMOR_EQUIP_GOLD, 2.0F, 0.4F, () -> {
-        return Ingredient.of(ModItem.LEAD_INGOT.get());
+        return Ingredient.of(ModItems.LEAD_INGOT.get());
     }),
     LIGHT("light", 30, new int[]{1, 0, 0, 0}, 25, SoundEvents.ARMOR_EQUIP_LEATHER, 0.0F, 0.0F, () -> {
-        return Ingredient.of(ModItem.LONG_FEATHER.get());
+        return Ingredient.of(ModItems.LONG_FEATHER.get());
     }),
     COPPER("copper", 20, new int[]{2, 4, 6, 3}, 25, SoundEvents.ARMOR_EQUIP_GOLD, 0.0F, 0.0F, () -> {
         return Ingredient.of(Items.COPPER_INGOT);

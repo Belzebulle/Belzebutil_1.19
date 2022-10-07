@@ -1,10 +1,10 @@
 package fr.krepe.belzebutil;
 
 import com.mojang.logging.LogUtils;
-import fr.krepe.belzebutil.block.ModBlock;
-import fr.krepe.belzebutil.block.ModBlockEntity;
-import fr.krepe.belzebutil.block.SpecialModBlock;
-import fr.krepe.belzebutil.item.ModItem;
+import fr.krepe.belzebutil.block.ModBlocks;
+import fr.krepe.belzebutil.block.ModBlockEntities;
+import fr.krepe.belzebutil.block.SpecialModBlocks;
+import fr.krepe.belzebutil.item.ModItems;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.recipies.ModRecipes;
 import fr.krepe.belzebutil.screen.EnergyGeneratorScreen;
@@ -30,10 +30,10 @@ public class Belzebutil
     {
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModItem.registerItem(eventBus);
-        ModBlock.registerBlock(eventBus);
-        SpecialModBlock.registerSpeBlock(eventBus);
-        ModBlockEntity.register(eventBus);
+        ModItems.registerItem(eventBus);
+        ModBlocks.registerBlock(eventBus);
+        SpecialModBlocks.registerSpeBlock(eventBus);
+        ModBlockEntities.register(eventBus);
 
         ModMenuTypes.register(eventBus);
         ModRecipes.register(eventBus);

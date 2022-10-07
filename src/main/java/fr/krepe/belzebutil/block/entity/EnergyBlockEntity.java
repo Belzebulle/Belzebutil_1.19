@@ -1,6 +1,6 @@
 package fr.krepe.belzebutil.block.entity;
 
-import fr.krepe.belzebutil.block.ModBlockEntity;
+import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.energy.KrepeEnergyStorage;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.network.packet.PacketSyncEnergyToClient;
@@ -57,7 +57,7 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public EnergyBlockEntity(BlockPos pWorldPosition, BlockState pBlockState){
-        super(ModBlockEntity.ENERGY_BLOCK_ENTITY.get(), pWorldPosition, pBlockState);
+        super(ModBlockEntities.ENERGY_BLOCK_ENTITY.get(), pWorldPosition, pBlockState);
         this.data = new ContainerData() {
             public int get(int index) {
                 switch (index) {

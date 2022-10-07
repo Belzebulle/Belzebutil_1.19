@@ -1,7 +1,7 @@
 package fr.krepe.belzebutil.block.custom;
 
-import fr.krepe.belzebutil.block.ModBlock;
-import fr.krepe.belzebutil.item.ModItem;
+import fr.krepe.belzebutil.block.ModBlocks;
+import fr.krepe.belzebutil.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -25,7 +25,7 @@ public class xCropBlock extends CropBlock {
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ModItem.X_SEED.get();
+        return ModItems.X_SEED.get();
     }
 
     @Override
@@ -48,8 +48,8 @@ public class xCropBlock extends CropBlock {
 
         if(!pLevel.isClientSide && pHand == InteractionHand.MAIN_HAND){
             if(pState.getValue(AGE) == 6){
-                pPlayer.getInventory().add(new ItemStack(ModItem.X_EAT.get()));
-                pLevel.setBlockAndUpdate(pPos, ModBlock.X_CROP.get().defaultBlockState());
+                pPlayer.getInventory().add(new ItemStack(ModItems.X_EAT.get()));
+                pLevel.setBlockAndUpdate(pPos, ModBlocks.X_CROP.get().defaultBlockState());
             }
         }
         return InteractionResult.sidedSuccess(pLevel.isClientSide);

@@ -1,6 +1,6 @@
 package fr.krepe.belzebutil.screen;
 
-import fr.krepe.belzebutil.block.ModBlock;
+import fr.krepe.belzebutil.block.ModBlocks;
 import fr.krepe.belzebutil.block.entity.LeadStationEntity;
 import fr.krepe.belzebutil.screen.slot.ModResultSlot;
 import net.minecraft.network.FriendlyByteBuf;
@@ -110,7 +110,7 @@ public class LeadStationMenu extends AbstractContainerMenu {
     @Override
     public boolean stillValid(Player pPlayer) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
-                pPlayer, ModBlock.LEAD_STATION.get());
+                pPlayer, ModBlocks.LEAD_STATION.get());
     }
 
     private void addPlayerInventory(Inventory playerInventory) {
