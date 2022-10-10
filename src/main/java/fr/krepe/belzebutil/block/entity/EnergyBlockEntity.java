@@ -12,6 +12,8 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.MenuProvider;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -20,6 +22,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -48,9 +51,6 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
         super(pType, pWorldPosition, pBlockState);
         this.data = data;
     }
-
-
-
 
     public void setEnergyLevel(int energyLevel) {
         this.energyStorage.setEnergy(energyLevel);
@@ -122,6 +122,14 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
 
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, EnergyBlockEntity pBlockEntity) {
+        if (pLevel.isClientSide) return;
+        if (!hasHostileEntity(pLevel, pPos, pState, pBlockEntity)) return;
+
+    }
+
+    public static boolean hasHostileEntity(Level pLevel, BlockPos pPos, BlockState pState, EnergyBlockEntity pBlockEntity) {
+        return pLevel.getEntitiesOfClass(LivingEntity.class, new AABB(pPos).inflate(10),
+                entity -> entity.getType().getCategory() == MobCategory.MONSTER).size() > 0;
     }
 
     private static void extractEnergy(EnergyBlockEntity entity) {
@@ -160,8 +168,3 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
         return null;
     }
 }
-
-/*
-
-
- */
