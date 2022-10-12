@@ -135,6 +135,13 @@ public class ModItems {
                     return 2000;
                 }
             });
+    public static final RegistryObject<Item> ENERGY_SLIME_BALL = ITEMS.register("energy_slime_ball",
+            () -> new Item(new Item.Properties().tab(CreativeTab.ModTab)){
+                @Override
+                public int getBurnTime(ItemStack itemStack, @Nullable RecipeType<?> recipeType) {
+                    return 4000;
+                }
+            });
 
     public static final RegistryObject<Item> E_SLIME_SPAWN_EGG = ITEMS.register("e_slime_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntityTypes.E_SLIME, 0x22b341, 0x19732e,

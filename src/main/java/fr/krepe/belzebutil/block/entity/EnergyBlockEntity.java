@@ -2,6 +2,7 @@ package fr.krepe.belzebutil.block.entity;
 
 import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.energy.KrepeEnergyStorage;
+import fr.krepe.belzebutil.entity.ESlimeEntity;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.network.packet.PacketSyncEnergyToClient;
 import net.minecraft.core.BlockPos;
@@ -128,7 +129,7 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
         if (pLevel.isClientSide) return;
         if (!hasHostileEntity(pLevel, pPos)) return;
         // for each slime get size
-        List<Slime> list = slimeList(pLevel, pPos);
+        List<ESlimeEntity> list = slimeList(pLevel, pPos);
 
         System.out.println("Slime size 1 detected");
 
@@ -136,11 +137,11 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
     }
 
     public static boolean hasHostileEntity(Level pLevel, BlockPos pPos) {
-        return pLevel.getEntitiesOfClass(Slime.class, new AABB(pPos).inflate(5), entity -> entity.getSize() == 1).size() > 0;
+        return pLevel.getEntitiesOfClass(ESlimeEntity.class, new AABB(pPos).inflate(5)).size() > 0;
     }
 
-    private static List<Slime> slimeList(Level pLevel, BlockPos pPos){
-        return new ArrayList<>(pLevel.getEntitiesOfClass(Slime.class, new AABB(pPos).inflate(5), entity -> entity.getSize() == 1));
+    private static List<ESlimeEntity> slimeList(Level pLevel, BlockPos pPos){
+        return new ArrayList<>(pLevel.getEntitiesOfClass(ESlimeEntity.class, new AABB(pPos).inflate(5)));
     }
 
     private static void extractEnergy(EnergyBlockEntity entity) {
