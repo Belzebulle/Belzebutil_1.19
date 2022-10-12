@@ -5,6 +5,7 @@ import fr.krepe.belzebutil.block.ModBlocks;
 import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.block.SpecialModBlocks;
 import fr.krepe.belzebutil.entity.ModEntityTypes;
+import fr.krepe.belzebutil.entity.eslime.ESlimeRenderer;
 import fr.krepe.belzebutil.item.ModItems;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.recipies.ModRecipes;
@@ -12,6 +13,7 @@ import fr.krepe.belzebutil.screen.EnergyGeneratorScreen;
 import fr.krepe.belzebutil.screen.ModMenuTypes;
 import fr.krepe.belzebutil.screen.LeadStationScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -54,6 +56,8 @@ public class Belzebutil
 
         MenuScreens.register(ModMenuTypes.LEAD_STATION_MENU.get(), LeadStationScreen::new);
         MenuScreens.register(ModMenuTypes.ENERGY_GENERATOR_MENU.get(), EnergyGeneratorScreen::new);
+
+        EntityRenderers.register(ModEntityTypes.E_SLIME.get(), ESlimeRenderer::new);
     }
 
     private void setup(final FMLCommonSetupEvent event)
