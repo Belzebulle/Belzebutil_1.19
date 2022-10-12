@@ -2,6 +2,7 @@ package fr.krepe.belzebutil.item;
 
 import fr.krepe.belzebutil.CreativeTab;
 import fr.krepe.belzebutil.block.ModBlocks;
+import fr.krepe.belzebutil.entity.ModEntityTypes;
 import fr.krepe.belzebutil.item.armor.ModArmorItemLight;
 import fr.krepe.belzebutil.item.armor.ModArmorItemLead;
 import fr.krepe.belzebutil.item.armor.ModArmorItemScuba;
@@ -10,6 +11,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.RecipeType;
+import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -133,6 +135,10 @@ public class ModItems {
                     return 2000;
                 }
             });
+
+    public static final RegistryObject<Item> E_SLIME_SPAWN_EGG = ITEMS.register("e_slime_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntityTypes.E_SLIME, 0x22b341, 0x19732e,
+                    new Item.Properties().tab(CreativeTab.ModTab)));
 
     public static void registerItem(IEventBus eventBus){
         ITEMS.register(eventBus);

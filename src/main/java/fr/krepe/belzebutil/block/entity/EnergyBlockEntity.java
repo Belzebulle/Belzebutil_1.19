@@ -14,6 +14,7 @@ import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -31,6 +32,8 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
 
@@ -123,13 +126,21 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, EnergyBlockEntity pBlockEntity) {
         if (pLevel.isClientSide) return;
-        if (!hasHostileEntity(pLevel, pPos, pState, pBlockEntity)) return;
+        if (!hasHostileEntity(pLevel, pPos)) return;
+        // for each slime get size
+        List<Slime> list = slimeList(pLevel, pPos);
 
+        System.out.println("Slime size 1 detected");
+
+        pBlockEntity.energyStorage.receiveEnergy(10*list.size(), false);
     }
 
-    public static boolean hasHostileEntity(Level pLevel, BlockPos pPos, BlockState pState, EnergyBlockEntity pBlockEntity) {
-        return pLevel.getEntitiesOfClass(LivingEntity.class, new AABB(pPos).inflate(10),
-                entity -> entity.getType().getCategory() == MobCategory.MONSTER).size() > 0;
+    public static boolean hasHostileEntity(Level pLevel, BlockPos pPos) {
+        return pLevel.getEntitiesOfClass(Slime.class, new AABB(pPos).inflate(5), entity -> entity.getSize() == 1).size() > 0;
+    }
+
+    private static List<Slime> slimeList(Level pLevel, BlockPos pPos){
+        return new ArrayList<>(pLevel.getEntitiesOfClass(Slime.class, new AABB(pPos).inflate(5), entity -> entity.getSize() == 1));
     }
 
     private static void extractEnergy(EnergyBlockEntity entity) {

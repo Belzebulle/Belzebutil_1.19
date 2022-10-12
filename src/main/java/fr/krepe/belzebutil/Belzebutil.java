@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import fr.krepe.belzebutil.block.ModBlocks;
 import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.block.SpecialModBlocks;
+import fr.krepe.belzebutil.entity.ModEntityTypes;
 import fr.krepe.belzebutil.item.ModItems;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.recipies.ModRecipes;
@@ -40,6 +41,9 @@ public class Belzebutil
 
         //ModConfiguredFeatures.register(eventBus);
         //ModPlacedFeatures.register(eventBus);
+
+        ModEntityTypes.register(eventBus);
+
         eventBus.addListener(this::clientSetup);
         eventBus.addListener(this::setup);
         MinecraftForge.EVENT_BUS.register(this);
