@@ -2,8 +2,10 @@ package fr.krepe.belzebutil.block.custom;
 
 import fr.krepe.belzebutil.block.ModBlockEntities;
 import fr.krepe.belzebutil.block.entity.EnergyBlockEntity;
+import fr.krepe.belzebutil.block.entity.EnergyGeneratorEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -24,6 +26,7 @@ import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
@@ -96,7 +99,11 @@ public class EnergyBlock extends BaseEntityBlock {
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-
+            if (blockEntity instanceof EnergyBlockEntity) {
+                NetworkHooks.openScreen((ServerPlayer) pPlayer, (EnergyBlockEntity) blockEntity, pPos);
+            } else {
+                throw new IllegalStateException("Energy Block Entity not found");
+            }
         }
 
         return InteractionResult.sidedSuccess(pLevel.isClientSide);

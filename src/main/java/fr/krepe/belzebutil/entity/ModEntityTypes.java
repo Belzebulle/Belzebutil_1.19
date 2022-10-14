@@ -16,10 +16,8 @@ public class ModEntityTypes {
     public static final RegistryObject<EntityType<ESlimeEntity>> E_SLIME =
             ENTITY_TYPES.register("e_slime",
                     () -> EntityType.Builder.of(ESlimeEntity::new, MobCategory.MONSTER)
-                            .sized(0.4f, 1.5f)
+                            .sized(0.5f, 0.5f)
                             .build(new ResourceLocation(Belzebutil.MOD_ID, "e_slime").toString()));
-
-
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

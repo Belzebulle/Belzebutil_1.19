@@ -5,6 +5,8 @@ import fr.krepe.belzebutil.energy.KrepeEnergyStorage;
 import fr.krepe.belzebutil.entity.ESlimeEntity;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.network.packet.PacketSyncEnergyToClient;
+import fr.krepe.belzebutil.screen.EnergyBlockMenu;
+import fr.krepe.belzebutil.screen.EnergyGeneratorMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -131,8 +133,6 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
         // for each slime get size
         List<ESlimeEntity> list = slimeList(pLevel, pPos);
 
-        System.out.println("Slime size 1 detected");
-
         pBlockEntity.energyStorage.receiveEnergy(10*list.size(), false);
     }
 
@@ -176,7 +176,8 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
 
     @Nullable
     @Override
-    public AbstractContainerMenu createMenu(int p_39954_, Inventory p_39955_, Player p_39956_) {
-        return null;
+    public AbstractContainerMenu createMenu(int id, Inventory inventory, Player p_39956_) {
+        return new EnergyBlockMenu(id, inventory, this, this.data);
+
     }
 }

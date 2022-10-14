@@ -205,7 +205,7 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
         return !pBlockEntity.itemHandler.getStackInSlot(0).isEmpty();
     }
     private static boolean isCoalItem(EnergyGeneratorEntity entity){
-        return entity.itemHandler.getStackInSlot(0).getItem() == ModItems.ROTTEN_COAL.get();
+        return entity.itemHandler.getStackInSlot(0).getItem() == ModItems.ROTTEN_COAL.get() || entity.itemHandler.getStackInSlot(0).getItem() == ModItems.ENERGY_SLIME_BALL.get();
     }
 
     private static void craftItem(EnergyGeneratorEntity entity, Item item) {

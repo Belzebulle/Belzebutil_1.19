@@ -19,6 +19,9 @@ public class ModMenuTypes {
     public static final RegistryObject<MenuType<EnergyGeneratorMenu>> ENERGY_GENERATOR_MENU =
             registerMenuType(EnergyGeneratorMenu::new, "energy_generator_menu");
 
+    public static final RegistryObject<MenuType<EnergyBlockMenu>> ENERGY_BLOCK_MENU =
+            registerMenuType(EnergyBlockMenu::new, "energy_block_menu");
+
     private static <T extends AbstractContainerMenu>RegistryObject<MenuType<T>> registerMenuType(IContainerFactory<T> factory,
                                                                                          String name) {
         return MENUS.register(name, () -> IForgeMenuType.create(factory));
