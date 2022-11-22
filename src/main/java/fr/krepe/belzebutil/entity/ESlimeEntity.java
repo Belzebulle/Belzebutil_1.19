@@ -37,7 +37,7 @@ public class ESlimeEntity extends Monster implements IAnimatable {
                 .add(Attributes.MAX_HEALTH, 20.0D)
                 .add(Attributes.ATTACK_DAMAGE, 3.0f)
                 .add(Attributes.ATTACK_SPEED, 1.0f)
-                .add(Attributes.MOVEMENT_SPEED, 0.4f).build();
+                .add(Attributes.MOVEMENT_SPEED, 0.1f).build();
     }
 
     @Override
@@ -61,14 +61,7 @@ public class ESlimeEntity extends Monster implements IAnimatable {
     }
 
     private <E extends IAnimatable> PlayState predicate(AnimationEvent<E> event) {
-        /*
-        if (event.isMoving()) {
-            event.getController().setAnimation(new AnimationBuilder().addAnimation("", true));
-            return PlayState.CONTINUE;
-        }
 
-        event.getController().setAnimation(new AnimationBuilder().addAnimation("", true));
-        */
         return PlayState.STOP;
     }
 

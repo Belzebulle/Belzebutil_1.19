@@ -1,7 +1,7 @@
 package fr.krepe.belzebutil.block.entity;
 
 import fr.krepe.belzebutil.block.ModBlockEntities;
-import fr.krepe.belzebutil.energy.KrepeEnergyStorage;
+import fr.krepe.belzebutil.energy.BelzeEnergyStorage;
 import fr.krepe.belzebutil.item.ModItems;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.network.packet.PacketSyncEnergyToClient;
@@ -37,6 +37,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.annotation.Nonnull;
 
 import static fr.krepe.belzebutil.block.custom.EnergyGenerator.LIT;
+import static fr.krepe.belzebutil.block.entity.LeadStationEntity.energyForCraft;
 
 public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
     private final ItemStackHandler itemHandler = new ItemStackHandler(1) {
@@ -46,7 +47,7 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
         }
     };
 
-    public final KrepeEnergyStorage energyStorage = new KrepeEnergyStorage(60000, 200) {
+    public final BelzeEnergyStorage energyStorage = new BelzeEnergyStorage(60000, 200) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -223,7 +224,7 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
 
 
     private static void extractEnergy(EnergyGeneratorEntity entity) {
-        entity.energyStorage.extractEnergy(50, false);
+        entity.energyStorage.extractEnergy(energyForCraft, false);
     }
 
     private static void extractEnergy(EnergyGeneratorEntity entity, int extractValue) {
@@ -231,7 +232,7 @@ public class EnergyGeneratorEntity extends BlockEntity implements MenuProvider {
     }
 
     private static boolean hasEnoughEnergy(EnergyGeneratorEntity entity) {
-        return entity.energyStorage.getEnergyStored() >= 10;
+        return entity.energyStorage.getEnergyStored() >= energyForCraft;
     }
 
     private void resetProgress() {

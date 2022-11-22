@@ -56,12 +56,11 @@ public class PacketSyncEnergyToClient {
 
             if(Minecraft.getInstance().level.getBlockEntity(pos) instanceof EnergyBlockEntity blockEntity) {
                 blockEntity.setEnergyLevel(energy);
-/*
+
                 if(Minecraft.getInstance().player.containerMenu instanceof EnergyGeneratorMenu menu &&
                         menu.blockEntity.getBlockPos().equals(pos)) {
                     blockEntity.setEnergyLevel(energy);
                 }
- */
             }
         });
         return true;

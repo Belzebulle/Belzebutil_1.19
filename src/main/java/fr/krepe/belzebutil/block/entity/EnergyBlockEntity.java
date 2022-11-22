@@ -1,12 +1,11 @@
 package fr.krepe.belzebutil.block.entity;
 
 import fr.krepe.belzebutil.block.ModBlockEntities;
-import fr.krepe.belzebutil.energy.KrepeEnergyStorage;
+import fr.krepe.belzebutil.energy.BelzeEnergyStorage;
 import fr.krepe.belzebutil.entity.ESlimeEntity;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.network.packet.PacketSyncEnergyToClient;
 import fr.krepe.belzebutil.screen.EnergyBlockMenu;
-import fr.krepe.belzebutil.screen.EnergyGeneratorMenu;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
@@ -15,9 +14,6 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.world.MenuProvider;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobCategory;
-import net.minecraft.world.entity.monster.Slime;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -40,7 +36,7 @@ import java.util.List;
 
 public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
 
-    public final KrepeEnergyStorage energyStorage = new KrepeEnergyStorage(60000, 200) {
+    public final BelzeEnergyStorage energyStorage = new BelzeEnergyStorage(60000, 200) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -133,7 +129,11 @@ public class EnergyBlockEntity extends BlockEntity implements MenuProvider {
         // for each slime get size
         List<ESlimeEntity> list = slimeList(pLevel, pPos);
 
-        pBlockEntity.energyStorage.receiveEnergy(10*list.size(), false);
+    }
+    public static int hasESlimeNear(Level pLevel, BlockPos pPos){
+        if(!hasHostileEntity(pLevel, pPos)) return 0;
+        List<ESlimeEntity> list = slimeList(pLevel, pPos);
+        return list.size();
     }
 
     public static boolean hasHostileEntity(Level pLevel, BlockPos pPos) {

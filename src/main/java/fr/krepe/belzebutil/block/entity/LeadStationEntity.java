@@ -1,7 +1,7 @@
 package fr.krepe.belzebutil.block.entity;
 
 import fr.krepe.belzebutil.block.ModBlockEntities;
-import fr.krepe.belzebutil.energy.KrepeEnergyStorage;
+import fr.krepe.belzebutil.energy.BelzeEnergyStorage;
 import fr.krepe.belzebutil.network.ModMessages;
 import fr.krepe.belzebutil.network.packet.PacketSyncEnergyToClient;
 import fr.krepe.belzebutil.recipies.LeadStationRecipe;
@@ -49,7 +49,7 @@ public class LeadStationEntity extends BlockEntity implements MenuProvider {
     };
 
 
-    public final KrepeEnergyStorage energyStorage = new KrepeEnergyStorage(60000, 200) {
+    public final BelzeEnergyStorage energyStorage = new BelzeEnergyStorage(60000, 200) {
         @Override
         public void onEnergyChanged() {
             setChanged();
@@ -63,6 +63,8 @@ public class LeadStationEntity extends BlockEntity implements MenuProvider {
     protected final ContainerData data;
     private int progress = 0;
     private int maxProgress = 0;
+
+    public static final int energyForCraft = 15;
 
     public LeadStationEntity(BlockEntityType<?> pType, BlockPos pWorldPosition, BlockState pBlockState, ContainerData data) {
         super(pType, pWorldPosition, pBlockState);
@@ -160,24 +162,34 @@ public class LeadStationEntity extends BlockEntity implements MenuProvider {
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, LeadStationEntity pBlockEntity) {
         if(pLevel.isClientSide) return;
+
+        int slimeNear = pBlockEntity.energyStorage.hasESlimeNear(pLevel, pPos);
+
+        if(slimeNear > 0) {
+            pBlockEntity.energyStorage.receiveEnergy(slimeNear, false);
+        }
+
         if(hasRecipe(pBlockEntity) && hasEnoughEnergy(pBlockEntity)) {
-            pBlockEntity.progress++;
+            pBlockEntity.progress ++;
             extractEnergy(pBlockEntity);
             setChanged(pLevel, pPos, pState);
             craftItem(pBlockEntity);
             pLevel.setBlock(pPos, pState.setValue(LIT, true), 2);
         } else {
+            if (hasRecipe(pBlockEntity)){
+                return;
+            }
             pBlockEntity.resetProgress();
             setChanged(pLevel, pPos, pState);
             pLevel.setBlock(pPos, pState.setValue(LIT, false), 2);
         }
     }
     private static void extractEnergy(LeadStationEntity entity) {
-        entity.energyStorage.extractEnergy(50, false);
+        entity.energyStorage.extractEnergy(energyForCraft, false);
     }
 
     private static boolean hasEnoughEnergy(LeadStationEntity entity) {
-        return entity.energyStorage.getEnergyStored() >= 10;
+        return entity.energyStorage.getEnergyStored() >= energyForCraft;
     }
 
     private static boolean hasRecipe(LeadStationEntity entity) {

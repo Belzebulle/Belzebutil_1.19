@@ -1,24 +1,30 @@
 package fr.krepe.belzebutil.energy;
 
-import fr.krepe.belzebutil.block.entity.EnergyBlockEntity;
 import fr.krepe.belzebutil.block.entity.LeadStationEntity;
+import fr.krepe.belzebutil.entity.ESlimeEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.phys.AABB;
 import net.minecraftforge.energy.EnergyStorage;
 
-public abstract class KrepeEnergyStorage extends EnergyStorage {
-    public KrepeEnergyStorage(int capacity) {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class BelzeEnergyStorage extends EnergyStorage {
+    public BelzeEnergyStorage(int capacity) {
         super(capacity);
     }
 
-    public KrepeEnergyStorage(int capacity, int maxTransfer) {
+    public BelzeEnergyStorage(int capacity, int maxTransfer) {
         super(capacity, maxTransfer);
     }
 
-    public KrepeEnergyStorage(int capacity, int maxReceive, int maxExtract) {
+    public BelzeEnergyStorage(int capacity, int maxReceive, int maxExtract) {
         super(capacity, maxReceive, maxExtract);
     }
 
-    public KrepeEnergyStorage(int capacity, int maxReceive, int maxExtract, int energy) {
+    public BelzeEnergyStorage(int capacity, int maxReceive, int maxExtract, int energy) {
         super(capacity, maxReceive, maxExtract, energy);
     }
 
@@ -54,6 +60,21 @@ public abstract class KrepeEnergyStorage extends EnergyStorage {
         }
         return energy;
     }
+
+    public int hasESlimeNear(Level pLevel, BlockPos pPos){
+        if(!hasHostileEntity(pLevel, pPos)) return 0;
+        List<ESlimeEntity> list = slimeList(pLevel, pPos);
+        return list.size();
+    }
+
+    public boolean hasHostileEntity(Level pLevel, BlockPos pPos) {
+        return pLevel.getEntitiesOfClass(ESlimeEntity.class, new AABB(pPos).inflate(5)).size() > 0;
+    }
+
+    private List<ESlimeEntity> slimeList(Level pLevel, BlockPos pPos){
+        return new ArrayList<>(pLevel.getEntitiesOfClass(ESlimeEntity.class, new AABB(pPos).inflate(5)));
+    }
+
 
     public abstract void onEnergyChanged();
 

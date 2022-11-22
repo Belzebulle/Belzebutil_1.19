@@ -28,8 +28,12 @@
   "block.belzebutil.raw_lead_block" : "Raw Lead Block",
   "block.belzebutil.lead_ore" : "Lead Ore",
   "block.belzebutil.deepslate_lead_ore" : "Deepslate Lead Ore",
+
   "block.belzebutil.lead_station" : "Lead Station",
   "block.belzebutil.energy_generator" : "Energy Generator",
+  "block.belzebutil.energy_block" : "Energy Block",
+  "item.belzebutil.energy_slime_ball": "Energy Slime Ball",
+  "item.belzebutil.e_slime_spawn_egg": "Energy Slime Spawn Egg",
 
   "item.belzebutil.long_feather" :  "Long Feather",
   "item.belzebutil.light_boots" :  "Light Boots",
